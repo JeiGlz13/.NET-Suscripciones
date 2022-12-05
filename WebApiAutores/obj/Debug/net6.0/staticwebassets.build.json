@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "X+Cd9htU7Zl1FwLJiUmJMZuPSHQ67SwLooaIVKBaru8=",
+  "Source": "WebApiAutores",
+  "BasePath": "_content/WebApiAutores",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApiAutores\\wwwroot",
+      "Source": "WebApiAutores",
+      "ContentRoot": "C:\\Users\\jnurinda\\Desktop\\.NET\\Suscripciones\\WebApiAutores\\wwwroot\\",
+      "BasePath": "_content/WebApiAutores",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

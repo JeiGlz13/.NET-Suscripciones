@@ -10,6 +10,8 @@ namespace WebApiAutores.Entidades
         public bool Activa { get; set; }
         public string UsuarioId { get; set; }
         public IdentityUser Usuario { get; set; }
+        public List<RestriccionIP> RestriccionesIPs { get; set; }
+        public List<RestriccionesDominio> RestriccionesDominios { get; set; }
     }
 
 }

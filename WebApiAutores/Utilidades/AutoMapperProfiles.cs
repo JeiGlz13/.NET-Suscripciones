@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using WebApiAutores.DTO;
 using WebApiAutores.DTO.LlavesDTOs;
+using WebApiAutores.DTO.RestriccionesDominio;
+using WebApiAutores.DTO.RestriccionesIP;
 using WebApiAutores.Entidades;
 
 namespace WebApiAutores.Utilidades
@@ -29,6 +31,9 @@ namespace WebApiAutores.Utilidades
             CreateMap<Comentario, ComentarioDTO>();
 
             CreateMap<LlaveAPI, LlaveDTO>();
+
+            CreateMap<RestriccionesDominio, RestriccionDominioDTO>().ReverseMap();
+            CreateMap<RestriccionIP, RestriccionesIPDTO>();
         }
         private List<LibroDTO> MapAutorDTOLibros(Autor autor, AutorDTO autorDTO)
         {

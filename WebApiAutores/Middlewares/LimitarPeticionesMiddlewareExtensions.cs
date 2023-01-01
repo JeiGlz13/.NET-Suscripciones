@@ -61,6 +61,7 @@ public class LimitarPeticionesMiddleware
             .LlaveAPIs
             .Include(x => x.RestriccionesDominios)
             .Include(x => x.RestriccionesIPs)
+            .Include(x => x.Usuario)
             .FirstOrDefaultAsync(x => x.Llave == llave);
 
         if (llaveDb == null)
@@ -90,6 +91,13 @@ public class LimitarPeticionesMiddleware
                 await httpContext.Response.WriteAsync("Ha excedido el límite de peticiones por día para una cuenta gratuita.");
                 return;
             }
+        }
+        else if (llaveDb.Usuario.NoHaPagado)
+        {
+            httpContext.Response.StatusCode = 400;
+            await httpContext.Response.WriteAsync("Debe pagar su suscriocion para continuar.");
+            return;
+
         }
 
         var superaRestricciones = PeticionSuperaAlgunaRestriccion(llaveDb, httpContext);

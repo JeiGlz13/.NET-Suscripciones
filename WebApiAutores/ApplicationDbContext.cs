@@ -4,7 +4,7 @@ using WebApiAutores.Entidades;
 
 namespace WebApiAutores
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<Usuario>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -15,6 +15,9 @@ namespace WebApiAutores
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AutorLibro>()
                         .HasKey(al => new {al.AutorId, al.LibroId});
+
+            modelBuilder.Entity<Factura>()
+                        .Property(x => x.Monto).HasColumnType("decimal(18, 2)");
         }
 
         public DbSet<Autor>Autores { get; set; }
@@ -25,5 +28,7 @@ namespace WebApiAutores
         public DbSet<Peticion> Peticiones { get; set; }
         public DbSet<RestriccionesDominio> RestriccionesDominios { get; set; }
         public DbSet<RestriccionIP> RestriccionIPs { get; set; }
+        public DbSet<Factura> Facturas { get; set; }
+        public DbSet<FacturaEmitida> FacturasEmitidas { get; set; }
     }
 }

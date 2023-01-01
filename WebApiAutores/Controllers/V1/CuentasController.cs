@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebApiAutores.DTO;
+using WebApiAutores.Entidades;
 using WebApiAutores.Servicios;
 
 namespace WebApiAutores.Controllers.V1
@@ -16,16 +17,16 @@ namespace WebApiAutores.Controllers.V1
     [Route("api/v1/cuentas")]
     public class CuentasController: ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Usuario> _userManager;
         private readonly IConfiguration _configuration;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<Usuario> _signInManager;
         private readonly ServicioLlaves _servicioLlaves;
 
 
         public CuentasController(
-            UserManager<IdentityUser> userManager, 
+            UserManager<Usuario> userManager, 
             IConfiguration configuration,
-            SignInManager<IdentityUser> signInManager,
+            SignInManager<Usuario> signInManager,
             ServicioLlaves servicioLlaves
         )
         {
@@ -38,7 +39,7 @@ namespace WebApiAutores.Controllers.V1
         [HttpPost("registrar", Name = "registrarUsuario")]
         public async Task<ActionResult<RespuestaAutenticacion>> Registrar(CredencialesUsuario credencialesUsuario)
         {
-            var usuario = new IdentityUser
+            var usuario = new Usuario
             {
                 UserName = credencialesUsuario.Email,
                 Email = credencialesUsuario.Email,
